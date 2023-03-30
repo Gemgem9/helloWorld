@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block page_title %} Contact Form {% endblock %}
+{% block page_head %} Contact Form {% endblock %}
+
+{% block page_content %}
+
+{% if form_submitted %}
+    <div class="col-12">
+        <h2>Thank you for completing the Contact Form</h2>
+    </div>
+
+    <div class="col-md-6">
+        <p>First Name: </p>
+    </div>
+    <div class="col-md-6">
+        <p> {{ request.form.get('first_name') }} </p>
+    </div>
+
+    <div class="col-md-6">
+        <p>Last Name: </p>
+    </div>
+
+    <div class="col-md-6">
+        <p> {{ request.form.get('last_name') }} </p>
+    </div>
+
+    <div class="col-md-6">
+        <p>Email: </p>
+    </div>
+
+    <div class="col-md-6">
+        <p> {{ request.form.get('email') }} </p>
+    </div>
+
+    <div class="col-md-6">
+        <p>Favorite Food: </p>
+    </div>
+
+    <div class="col-md-6">
+        <p> {{ request.form.get('fav_food') }} </p>
+    </div>
+
+{% else %}
+
+<form class="row-g" action="{{ url_for ('contact') }}" method="post">
+  <div class="col-md-6">
+    <label for="first_name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name">
+  </div>
+
+  <div class="col-md-6 pt-3">
+    <label for="last_name" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name">
+  </div>
+
+  <div class="col-md-6 pt-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com">
+  </div>
+
+  <div class="col-md-6 pt-3 pb-4">
+      <label for="fav_food" class="form-label">Favorite Food</label>
+      <input type="text" class="form-control" id="fav_food" name="fav_food" placeholder="Enter Favorite Food">
+  </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary pt-2">Submit</button>
+        </div>
+</form>
+
+{% endif %}
+{% endblock %}
