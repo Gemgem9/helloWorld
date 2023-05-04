@@ -406,6 +406,7 @@ def analytics_dashboard():
 
     # Orders by Month (Example of a Custom SQL Query for SQLite)
     qry_orders_by_month = db.session.query(
+        ProductCategory.category_name.label('category_names'),
         func.strftime('%Y-%m', StoreOrder.order_date).label('order_month'),
         func.count(StoreOrder.order_id).label("order_counts")
     ) \
